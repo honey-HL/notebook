@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MyCalendar from './component/calendar'
 
 class TopBar extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class LeftView extends React.Component {
   render() {
     return (
       <div className="left_view">
-      heoolo
+        <MyCalendar/>
       </div>
     );
   }
