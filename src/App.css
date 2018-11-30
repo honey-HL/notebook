@@ -30,3 +30,29 @@
     transform: rotate(360deg);
   }
 }
+
+
+/************my style**********/
+.topbar {
+  height: 52px;
+  background: #29e;
+  position: relative;
+  z-index: 1000;
+  color: #fff;
+  text-align: center;
+  line-height: 52px;
+}
+.wrap {
+  height: 100%;
+  overflow-x: hidden;
+}
+.left_view {
+  position: fixed;
+  left: 0;
+  top:0;
+  height: 100%;
+  width: 229px;
+  background-color: #f5f5f5;
+  border-right: 1px solid silver;
+  z-index: 999;
+}
