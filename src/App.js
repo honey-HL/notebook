@@ -18,6 +18,17 @@ class LeftView extends React.Component {
     return (
       <div className="left_view">
         <MyCalendar/>
+        <div style={{width:'100%', height:'300px'}}> djijdqd</div>
+      </div>
+    );
+  }
+}
+
+class RightContainer extends React.Component {
+  render() {
+    return (
+      <div className="right_container">
+        右边内容
       </div>
     );
   }
@@ -44,6 +55,7 @@ class App extends Component {
         <TopBar/>
         <div className="wrap">
           <LeftView/>
+          <RightContainer/>
         </div>
       </div>
     );
