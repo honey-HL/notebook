@@ -2,8 +2,47 @@
 
 
 
+/******************日历内容********************/
+.calender_table tr .weekend {
+    color: #e02d2d;
+}
+.calender_table tr:first-child th {
+    height: 34px;
+    font-weight: 400;
+    font-size: 14px;
+    width: 55px;
+    border-top: 1px solid #5af;
+    box-sizing: border-box;
 
+}
+.calender_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.calendar {
+    margin-top: 10px;
+}
+.right_content {
+    font-size: 13px;
+    height: 100%;
+}
+.dates {
+    font-family: arial;
+    word-break: break-word;
+}
+.ji_hao {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+    line-height: 76px;
+    font-size: 52px;
+    background: #fb0;
+    border-radius: 3px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,.1), -1px 2px 5px rgba(0,0,0,.1);
+}
 
+/*****************日历选择栏******************/
 .year_list {
     border: 1px solid #bbb;
     width: 80px;
@@ -12,6 +51,19 @@
     box-sizing: border-box;
     margin-left: -1px;
     position: relative;
+    top: -2px;
+    background: #fff;
+}
+.year_list li {
+    height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+}
+.year_list li:hover{
+    background: #f5f5f5;
+}
+.year_list .cur_year {
+    background: #f5f5f5;
 }
 .holiday_box {
     box-sizing: border-box;
@@ -33,6 +85,7 @@ ul, li {
     top: -2px;
     border: 1px solid #bbb;
     cursor: pointer;
+    background: #fff;
 }
 .month_list li {
     height: 26px;
@@ -40,6 +93,9 @@ ul, li {
     background: transparent;
 }
 .month_list li:hover{
+    background: #f5f5f5;
+}
+.month_list .cur_month {
     background: #f5f5f5;
 }
 .month {
@@ -132,6 +188,7 @@ ul, li {
     box-sizing: border-box;
     display: inline-block;
     float: left;
+    cursor: pointer;
 }
 .select_box {
     height: 26px;
@@ -166,9 +223,10 @@ ul, li {
     border: 2px solid #57abff;
     border-right: 0;
     height: 366px;
-    position: relative;
     z-index: 1;
-    margin:10px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 .cal_wrap {
     width: 100%;
@@ -178,15 +236,12 @@ ul, li {
     width: 405px;
     padding: 10px;
     height: 100%;
-    float: left;
-    position: relative;
     z-index: 1;
     box-sizing: border-box;
 }
 .cal_wrap_right {
     color: #fff;
     text-align: center;
-    margin-left: 406px;
     height: 368px;
     background: #5caeff;
     background: -webkit-gradient(linear,0 0,0 100%,from(#5af),to(#73b9ff));
