@@ -1,0 +1,36 @@
+
+
+
+
+
+.tr .td:nth-child(6), .tr .td:nth-child(7) {
+    color: #e02d2d;
+}
+.active {
+    background: #fb0;
+    color: #fff;
+}
+.same_date {
+    border:3px solid #fb0 !important;
+}
+.last_days {
+    color: #bfbfbf;
+}
+.td {
+    width: 55px;
+    box-sizing: border-box;
+    padding: 0;
+    border-top:1px solid #c8cacc;
+    cursor: pointer;
+}
+.td a {
+    display: inline-block;
+    width: 47px;
+    border:3px solid transparent;
+}
+.td a:hover {
+    border:3px solid #fb0;
+}
+.td_gray {
+    color: #bfbfbf;
+}

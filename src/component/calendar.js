@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/calendar.css'
 import emitter from "../libs/ev"
+import CreateCalendar from './create_calender'
 
 class SelectBar extends React.Component {
     constructor (props) {
@@ -16,6 +17,8 @@ class SelectBar extends React.Component {
         }
     }
     componentDidMount() {
+        console.log(document.getElementsByClassName('year_list')[0].scrollTop);
+        document.getElementsByClassName('year_list')[0].scrollTop = (this.state.full_year - 1900)*26;
         window.addEventListener('click', () => {
             if (this.state.is_month_list_show === 'block') {
                 this.setState({is_month_list_show: 'none'})
@@ -40,23 +43,20 @@ class SelectBar extends React.Component {
         }
     }
     changeMonth (month) {
+        emitter.emit("getMonth", month);
         this.setState({cur_month: month});
         this.setState({is_month_list_show: 'none'});
     }
     changeYear (year) {
-        // emitter.emit("callMe","Hello");
+        emitter.emit("getYear", year);
         this.setState({full_year: year});
         this.setState({is_year_list_show: 'none'});
     }
     yearScroll () {
-        let clientHeight = this.yearBox.clientHeight; //可视区域高度
-        // let scrollTop  = this.yearBox.scrollTop;  //滚动条滚动高度
-        // this.yearBox.scrollTo(0, (this.state.full_year - 1900)*26);
-        // this.yearBox.attributes('style', 'top:' + (this.state.full_year - 1900)*26 + 'px');
-        // console.log(scrollTop);
-        // let scrollHeight = this.refs.yearBox.scrollHeight; //滚动内容高度
+        document.getElementsByClassName('year_list')[0].scrollTop = (this.state.full_year - 1900)*26;
     }
     render() {
+        // onScrollCapture={() => this.yearScroll()}
         const year_arr = [];
         for (let i = 1900; i <= 2050; i++) {
             year_arr.push(<li className={i == this.state.full_year ? 'cur_year':null} onClick={this.changeYear.bind(this, i)} key={i}>{i}年</li>)
@@ -69,7 +69,7 @@ class SelectBar extends React.Component {
                     <div className="btn_year">
                         <span className="triangle"></span>
                     </div>
-                    <ul onScrollCapture={() => this.yearScroll()} ref={c => {this.yearBox = c;}} style={{'display': this.state.is_year_list_show}} className="year_list">
+                    <ul ref={c => {this.yearBox = c;}} style={{'display': this.state.is_year_list_show, 'scrollTop': (this.state.full_year - 1900)*26}} className="year_list">
                         {year_arr}
                     </ul>
                 </div>
@@ -100,29 +100,29 @@ class SelectBar extends React.Component {
     }
 }
 
-class Calendar extends React.Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            weeks : ['一', '二', '三', '四', '五', '六', '日']
-        }
-    }
-    render () {
-        return (
-            <table className="calender_table">
-                <tbody>
-                    <tr>
-                        {
-                            this.state.weeks.map((item, index) => {
-                                return <th className={(index== 5 || index== 6) ? "weekend" :null} key={item}>{item}</th>
-                            })
-                        }
-                    </tr>
-                </tbody>
-            </table>
-        );
-    }
-}
+// class Calendar extends React.Component {
+//     constructor (props) {
+//         super(props)
+//         this.state = {
+//             weeks : ['一', '二', '三', '四', '五', '六', '日']
+//         }
+//     }
+//     render () {
+//         return (
+//             <table className="calender_table">
+//                 <tbody>
+//                     <tr>
+//                         {
+//                             this.state.weeks.map((item, index) => {
+//                                 return <th className={(index== 5 || index== 6) ? "weekend" :null} key={item}>{item}</th>
+//                             })
+//                         }
+//                     </tr>
+//                 </tbody>
+//             </table>
+//         );
+//     }
+// }
 
 class RightContent extends React.Component {
     constructor (props) {
@@ -159,7 +159,7 @@ class RightContent extends React.Component {
     }
 }
 
-export default class App extends React.Component {
+export default class MyCalendar extends React.Component {
     render() {
         return(
             <div className="cal_box">
@@ -168,7 +168,7 @@ export default class App extends React.Component {
                     <a className="back_today">返回今天</a> */}
                     <SelectBar/>
                     <div className="calendar">
-                        <Calendar/>
+                        <CreateCalendar/>
                     </div>
                 </div>
                 <div className="cal_wrap_right">
