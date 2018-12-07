@@ -63,35 +63,31 @@ class SelectBar extends React.Component {
         }
       return (
         <div className="year_month_day">
-            <div className="select_box">
-                <div onClick={this.showYearList.bind(this)} className="year_box">
-                    <div className="year">{this.state.full_year}</div>
-                    <div className="btn_year">
-                        <span className="triangle"></span>
-                    </div>
-                    <ul ref={c => {this.yearBox = c;}} style={{'display': this.state.is_year_list_show, 'scrollTop': (this.state.full_year - 1900)*26}} className="year_list">
-                        {year_arr}
-                    </ul>
+            <div onClick={this.showYearList.bind(this)} className="year_box">
+                <div className="year">{this.state.full_year}</div>
+                <div className="btn_year">
+                    <span className="triangle"></span>
                 </div>
-                <div className="month_box">
-                    <a className="left_btn">{`<`}</a>
-                    <a className="right_btn">{`>`}</a>
-                    <div onClick={this.showMonthList.bind(this)} className="month">{this.state.cur_month}月
-                        <span className="triangle"></span>
-                    </div>
-                    <ul style={{'display': this.state.is_month_list_show}} className="month_list">
-                        {
-                            this.state.monthArr.map((item,index) => {
-                                return  <li className={item == this.state.cur_month ? 'cur_month':null} onClick={this.changeMonth.bind(this, item)} key={item}>{item}月</li>
-                            })
-                        }
-                    </ul>
-                </div>
-                <div className="holiday_box">
-                    <div className="year">假期安排</div>
-                    <div className="btn_year">
-                        <span className="triangle"></span>
-                    </div>
+                <ul ref={c => {this.yearBox = c;}} style={{'display': this.state.is_year_list_show, 'scrollTop': (this.state.full_year - 1900)*26}} className="year_list">
+                    {year_arr}
+                </ul>
+            </div>
+            <div className="month_box">
+                <a className="left_btn">{`<`}</a>
+                <a className="right_btn">{`>`}</a>
+                <div onClick={this.showMonthList.bind(this)} className="month">{this.state.cur_month}月</div>
+                <ul style={{'display': this.state.is_month_list_show}} className="month_list">
+                    {
+                        this.state.monthArr.map((item,index) => {
+                            return  <li className={item == this.state.cur_month ? 'cur_month':null} onClick={this.changeMonth.bind(this, item)} key={item}>{item}月</li>
+                        })
+                    }
+                </ul>
+            </div>
+            <div className="holiday_box">
+                <div className="year">假期</div>
+                <div className="btn_year">
+                    <span className="triangle"></span>
                 </div>
             </div>
             <a className="back_today">返回今天</a>
@@ -152,7 +148,7 @@ class RightContent extends React.Component {
     render () {
         return(
             <div className="right_content">
-                <p className="dates">{this.state.today} 星期{this.state.weeks}</p>
+                <div className="dates">{this.state.today} 星期{this.state.weeks}</div>
                 <p className="ji_hao">{this.state.date}</p>
             </div>
         )

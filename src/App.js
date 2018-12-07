@@ -18,7 +18,7 @@ class LeftView extends React.Component {
     return (
       <div className="left_view">
         <MyCalendar/>
-        <div style={{width:'100%', height:'300px'}}> djijdqd</div>
+        {/* <div style={{width:'100%', height:'300px'}}> djijdqd</div> */}
       </div>
     );
   }
@@ -35,6 +35,11 @@ class RightContainer extends React.Component {
 }
 
 class App extends Component {
+  componentDidMount () {
+    let height = document.documentElement.clientHeight || document.body.clientHeight;
+    console.log('height', height);
+    document.getElementsByClassName('App')[0].style.height = height + 'px';
+  }
   render() {
     return (
       <div className="App">
@@ -55,7 +60,7 @@ class App extends Component {
         <TopBar/>
         <div className="wrap">
           <LeftView/>
-          <RightContainer/>
+          {/* <RightContainer/> */}
         </div>
       </div>
     );

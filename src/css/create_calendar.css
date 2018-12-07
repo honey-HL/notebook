@@ -17,7 +17,7 @@
     color: #bfbfbf;
 }
 .td {
-    width: 55px;
+    width: calc(100%/7);
     box-sizing: border-box;
     padding: 0;
     border-top:1px solid #c8cacc;
@@ -25,7 +25,7 @@
 }
 .td a {
     display: inline-block;
-    width: 47px;
+    width: 3.4rem;
     border:3px solid transparent;
 }
 .td a:hover {
@@ -33,4 +33,7 @@
 }
 .td_gray {
     color: #bfbfbf;
+}
+.calender_table tr:first-child th{
+    font-size: 1.5rem;
 }
